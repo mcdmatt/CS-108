@@ -1,0 +1,212 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: smgteach2.bu.edu (MySQL 5.1.73)
+# Database: mcdmatt_project
+# Generation Time: 2018-12-03 17:02:14 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table Games
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `Games`;
+
+CREATE TABLE `Games` (
+  `game_id` int(11) NOT NULL AUTO_INCREMENT,
+  `home_team_id` varchar(25) DEFAULT NULL,
+  `away_team_id` varchar(25) DEFAULT NULL,
+  `location` varchar(30) NOT NULL DEFAULT '',
+  `home_score` int(11) NOT NULL,
+  `away_score` int(11) NOT NULL,
+  PRIMARY KEY (`game_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `Games` WRITE;
+/*!40000 ALTER TABLE `Games` DISABLE KEYS */;
+
+INSERT INTO `Games` (`game_id`, `home_team_id`, `away_team_id`, `location`, `home_score`, `away_score`)
+VALUES
+	(1,'1','5','Brother Gilbert Stadium',4,1),
+	(2,'2','3','LIU Brooklyn',1,1),
+	(3,'4','2','Hofstra University',2,1),
+	(4,'1','2','Brother Gilbert Stadium',0,6),
+	(5,'3','4','Yale University ',1,2),
+	(6,'5','3','Providence College',3,2),
+	(7,'4','1','Hofstra University',4,0);
+
+/*!40000 ALTER TABLE `Games` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table Players
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `Players`;
+
+CREATE TABLE `Players` (
+  `player_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL DEFAULT '',
+  `number` int(2) NOT NULL,
+  `position` varchar(2) NOT NULL DEFAULT '',
+  `birth_year` int(4) NOT NULL,
+  `college` varchar(30) DEFAULT NULL,
+  `goals` int(40) DEFAULT NULL,
+  `assists` int(40) DEFAULT NULL,
+  `saves` int(100) DEFAULT NULL,
+  `minutes_played` int(255) DEFAULT NULL,
+  `team_id` int(2) NOT NULL,
+  PRIMARY KEY (`player_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `Players` WRITE;
+/*!40000 ALTER TABLE `Players` DISABLE KEYS */;
+
+INSERT INTO `Players` (`player_id`, `name`, `number`, `position`, `birth_year`, `college`, `goals`, `assists`, `saves`, `minutes_played`, `team_id`)
+VALUES
+	(1,'Matt McDonnell',34,'F',1997,'BU',4,1,NULL,196,2),
+	(2,'Mike Bernardi',20,'GK',1996,'BU',NULL,NULL,12,210,2),
+	(3,'Rasmus Hansen',10,'F',1996,'LIU Brooklyn',1,1,NULL,148,2),
+	(4,'Simen Olafsen',14,'D',1996,'FIU',0,1,NULL,205,2),
+	(5,'Faozi Taib',12,'D',1996,'UC Santa Barbara',0,1,NULL,205,2),
+	(6,'James Thristino',11,'M',1996,'Adelphi',1,0,NULL,107,2),
+	(7,'Shaquille Sanchez',93,'F',1995,'SHU',2,0,NULL,145,3),
+	(8,'Matt Jones',1,'GK',1994,NULL,NULL,NULL,15,200,3),
+	(9,'Giuseppe Barone',8,'M',1997,'LIU Brooklyn',0,0,NULL,55,2),
+	(10,'Matia Cella',7,'M',1997,'Caldwell',0,2,NULL,155,2),
+	(11,'Joe Destefano',18,'D',1997,'Lafayette',0,0,NULL,167,2),
+	(12,'Simen Hestnes',6,'M',1996,'Xavier',2,0,NULL,190,2),
+	(13,'Benny Lafortune',3,'M',1996,'St. Francis Brooklyn',0,1,NULL,28,2),
+	(14,'Clemente Bouret',9,'M',1996,'Rider',1,1,NULL,120,2),
+	(15,'Tyler Turner',10,'D',1994,'Old Dominion',0,1,NULL,125,3),
+	(16,'Anthony Asante',32,'F',1992,NULL,2,1,NULL,139,3),
+	(17,'Arian Lekaj',5,'M',1996,'Lehigh',0,0,NULL,103,3),
+	(18,'Chris Carneiro',20,'D',1997,'Yale',0,0,NULL,84,3),
+	(19,'Jorge Zubillaga',19,'M',1995,'Hartford',0,0,NULL,108,3),
+	(20,'Carlos Tyler',7,'D',1990,NULL,0,0,NULL,188,3),
+	(21,'Miguel Carneiro',21,'M',1997,'Yale',0,0,NULL,67,3),
+	(22,'Josh Calderon',4,'M',1995,'UMass',0,0,NULL,93,3),
+	(23,'Louis Fajardo',17,'M',1996,'UMass Lowell',0,0,NULL,118,3),
+	(24,'Sean O\'Brien',3,'D',1995,'UMass',0,0,NULL,139,3),
+	(25,'Juan Arango',2,'M',1993,NULL,1,0,NULL,145,4),
+	(26,'Danny Szetela',3,'M',1990,NULL,0,2,NULL,167,4),
+	(27,'Amauri',7,'F',1992,NULL,2,0,NULL,183,4),
+	(28,'Carlos Mendes',8,'D',1991,NULL,0,0,NULL,190,4),
+	(29,'Lucky Mkosana',9,'F',1988,NULL,1,0,NULL,112,4),
+	(30,'Andrea Mancini',10,'M',1994,NULL,1,1,NULL,188,4),
+	(31,'Kobi Moyal',12,'M',1992,NULL,0,4,NULL,190,4),
+	(32,'Bljedi Bardic',5,'F',1991,NULL,3,0,NULL,190,4),
+	(33,'Jimmy Mulligan',18,'M',1992,NULL,0,0,NULL,176,4),
+	(34,'Brian Holt',1,'GK',1993,NULL,NULL,NULL,8,200,4),
+	(35,'Harri Hawkins',23,'D',1993,NULL,0,0,NULL,134,4),
+	(36,'Sal Barone',17,'F',1994,NULL,0,0,NULL,49,4),
+	(37,'Jacob Wagmeister',1,'GK',1992,NULL,NULL,NULL,10,190,1),
+	(38,'Leo Carvalho',2,'M',1990,NULL,0,1,NULL,169,1),
+	(39,'Paulo Henrique',3,'D',1991,NULL,0,0,NULL,102,1),
+	(40,'Gabriel De Souza',4,'D',1986,NULL,0,0,NULL,155,1),
+	(41,'Pedro Silva',5,'M',1989,NULL,NULL,NULL,NULL,166,1),
+	(42,'Leandro Ramirez',6,'M',1991,NULL,1,1,NULL,179,1),
+	(43,'Avner Alves',8,'D',1996,'Penn St.',0,0,NULL,166,1),
+	(44,'Rigoberto Jimenez',9,'F',1989,NULL,0,0,NULL,170,1),
+	(45,'Homero Morais',10,'M',1993,NULL,1,2,NULL,150,1),
+	(46,'Jadson Leite',32,'D',1987,NULL,0,0,NULL,145,1),
+	(47,'Ralph Angrand',22,'D',1996,'Pacific',0,0,NULL,132,1),
+	(48,'Marcelo Cunha',21,'D',1996,'Northeastern',0,0,NULL,110,1),
+	(49,'Isaac Addai',11,'F',1994,NULL,2,0,NULL,149,1),
+	(50,'Eric Amoateng',25,'D',1994,NULL,0,0,NULL,120,5),
+	(51,'Prince Boateng',5,'D',1994,NULL,0,0,NULL,115,5),
+	(52,'Omar Castro-Dreher',99,'D',1996,'URI',0,0,NULL,102,5),
+	(53,'Mana Chavali',12,'M',1997,'BU',1,0,NULL,138,5),
+	(54,'Ronaldinho Diniz',80,'M',1992,NULL,1,1,NULL,186,5),
+	(55,'Leo Herrera',23,'D',1997,'Bentley',0,1,NULL,73,5),
+	(56,'Raniel Issac',4,'F',1996,'UConn',0,1,NULL,128,5),
+	(57,'Joshua Jess',6,'F',1995,'Kentucky',0,1,NULL,145,5),
+	(58,'Fabrice Komla Dogbey',17,'F',1992,NULL,2,0,NULL,140,5),
+	(59,'Jon Lach',22,'M',1997,'Wright St.',0,0,NULL,112,5),
+	(60,'Sergio Lobo',27,'M',1996,'UCLA',0,0,NULL,149,5),
+	(61,'Mauricio Martinez',14,'GK',1995,'UIC',NULL,NULL,8,104,5),
+	(62,'Keegan Nutt',19,'D',1994,'Loyola',0,0,NULL,137,5);
+
+/*!40000 ALTER TABLE `Players` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table x.Standings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `x.Standings`;
+
+CREATE TABLE `x.Standings` (
+  `national_rank` int(3) unsigned NOT NULL AUTO_INCREMENT,
+  `conference_rank` int(2) NOT NULL,
+  `wins` int(2) NOT NULL,
+  `losses` int(2) NOT NULL,
+  `ties` int(2) NOT NULL,
+  `team_name` varchar(25) NOT NULL DEFAULT '',
+  PRIMARY KEY (`national_rank`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `x.Standings` WRITE;
+/*!40000 ALTER TABLE `x.Standings` DISABLE KEYS */;
+
+INSERT INTO `x.Standings` (`national_rank`, `conference_rank`, `wins`, `losses`, `ties`, `team_name`)
+VALUES
+	(2,1,3,0,0,'New York Cosmos'),
+	(23,2,1,1,1,'Brooklyn Italians'),
+	(43,3,1,1,0,'Rhode Island Reds'),
+	(53,4,1,2,0,'Boston City FC'),
+	(61,5,0,2,1,'Elm City Express');
+
+/*!40000 ALTER TABLE `x.Standings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table Teams
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `Teams`;
+
+CREATE TABLE `Teams` (
+  `team_name` varchar(25) NOT NULL DEFAULT '',
+  `city` varchar(25) DEFAULT '',
+  `state` varchar(2) DEFAULT '',
+  `national championships` int(20) DEFAULT NULL,
+  `team_id` int(2) NOT NULL,
+  PRIMARY KEY (`team_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `Teams` WRITE;
+/*!40000 ALTER TABLE `Teams` DISABLE KEYS */;
+
+INSERT INTO `Teams` (`team_name`, `city`, `state`, `national championships`, `team_id`)
+VALUES
+	('Boston City FC','Boston','MA',1,1),
+	('Brooklyn Italians','Brooklyn','NY',2,2),
+	('Elm City Express','New Haven','CT',1,3),
+	('New York Cosmos','New York','NY',3,4),
+	('Rhode Island Reds','Providence','RI',0,5);
+
+/*!40000 ALTER TABLE `Teams` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
